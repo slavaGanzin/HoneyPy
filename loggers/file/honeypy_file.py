@@ -27,7 +27,7 @@ def process(config, section, parts, time_parts):
         #	parts[10]: remote_port
         #	parts[11]: data
         # UDP
-        #	parts[0]: date
+    #	parts[0]: date
         #	parts[1]: time_parts
         #	parts[2]: plugin string part
         #	parts[3]: plugin string part
@@ -56,6 +56,8 @@ def process(config, section, parts, time_parts):
 
 def post(config, section, date, time, date_time, millisecond, session, protocol, event, local_host, local_port, service, remote_host, remote_port, data):
     global file
+
+    data = bytearray.fromhex(data).decode()
 
     h = hashlib.md5()
     h.update(data)
